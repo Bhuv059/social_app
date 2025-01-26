@@ -2,10 +2,9 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { WebhookEvent } from "@clerk/nextjs/server";
-import { createUser, syncUser } from "@/actions/user.action";
+import { createUser } from "@/actions/user.action";
 import { NextResponse } from "next/server";
 import { User } from "@prisma/client";
-import prisma from "@/lib/prisma";
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
@@ -65,29 +64,6 @@ export async function POST(req: Request) {
       });
     }
 
-    // Create a new user in your database
-    /*  const user = {
-      clerkId: id,
-      email: email_addresses[0].email_address,
-      ...(first_name ? { firstName: first_name } : {}),
-      ...(last_name ? { lastName: last_name } : {}),
-      ...(image_url ? { imageUrl: image_url } : {}),
-      image: image_url,
-    };
-
-    const newUser = await createUser(user as User); */
-    /* 
-    const user = await prisma.user.create({
-      data: {
-        clerkId: id,
-        name: first_name ? first_name : "",
-        username: username ? username : "",
-        email: email_addresses[0].email_address,
-        image: image_url,
-      },
-    });
- */
-
     const data = {
       clerkId: id,
       name: first_name ? first_name : "",
@@ -99,7 +75,6 @@ export async function POST(req: Request) {
     const newUser = createUser(data);
     console.log(newUser);
 
-    // return NextResponse.json({ message: "OK", user: mongoUser });
     return new Response("", { status: 200 });
   }
 
