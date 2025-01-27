@@ -16,6 +16,7 @@ async function Sidebar() {
   if (!loggedinUser) return <UnAuthenticatedSidebar />;
 
   const user = await getUserByClerkId(loggedinUser.id);
+
   if (!user) return null;
   return (
     <div className="sticky top-20">
@@ -29,7 +30,6 @@ async function Sidebar() {
               <Avatar className="w-25 h-20  border-2">
                 <AvatarImage src={user.image || "/avatar.png"} />
               </Avatar>
-
               <div className="mt-4 space-y-1">
                 <h3 className="font-semibold">{user.name}</h3>
                 <p className="text-sm text-muted-foreground">{user.username}</p>
