@@ -61,7 +61,6 @@ function MobileNavbar() {
                 Home
               </Link>
             </Button>
-
             {isSignedIn ? (
               <>
                 <Button
