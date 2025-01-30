@@ -3,6 +3,7 @@
 import prisma from "@/lib/prisma";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { User } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 export async function createUser(data: User) {
   try {
@@ -65,7 +66,7 @@ export async function getUserByClerkId(clerkId: string) {
 export async function getDbUserId() {
   const { userId: clerkId } = await auth();
 
-  if (!clerkId) throw new Error("Unauthenticated !");
+  if (!clerkId) return;
 
   const user = await getUserByClerkId(clerkId);
 
@@ -119,7 +120,7 @@ export async function getRandomUsers() {
 export async function toggleFollow(targetUserId: string) {
   try {
     const userId = await getDbUserId();
-
+    if (!userId) return;
     if (userId === targetUserId) throw new Error();
 
     const existingFollow = await prisma.follows.findUnique({
@@ -161,6 +162,7 @@ export async function toggleFollow(targetUserId: string) {
         }),
       ]);
     }
+    revalidatePath("/");
     return { success: true };
   } catch (error) {
     console.log("Error in toggleFollow", error);

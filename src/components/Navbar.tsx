@@ -4,6 +4,7 @@ import DesktopNavbar from "./DesktopNavbar";
 import MobileNavbar from "./MobileNavbar";
 import { currentUser } from "@clerk/nextjs/server";
 import { syncUser } from "@/actions/user.action";
+import { Avatar, AvatarImage } from "./ui/avatar";
 
 const Navbar = async () => {
   const user = await currentUser();
@@ -17,7 +18,12 @@ const Navbar = async () => {
               href="/"
               className="text-xl font-bold text-primary font-mono tracking-wider"
             >
-              Socially
+              <div className="flex flex-row items-center gap-2">
+                <Avatar className="w-10 h-10  border-2">
+                  <AvatarImage src="/logo.ico" />
+                </Avatar>
+                <span className="">Socially</span>
+              </div>
             </Link>
           </div>
 

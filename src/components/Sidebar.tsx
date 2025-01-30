@@ -13,6 +13,8 @@ import { LinkIcon, MapPinIcon } from "lucide-react";
 async function Sidebar() {
   const loggedinUser = await currentUser();
 
+  console.log("loggedinUser-------------", loggedinUser);
+
   if (!loggedinUser) return <UnAuthenticatedSidebar />;
 
   const user = await getUserByClerkId(loggedinUser.id);
@@ -27,7 +29,7 @@ async function Sidebar() {
               href={`/profile/${user.username.replaceAll(".", "")}`}
               className="flex flex-col items-center justify-center"
             >
-              <Avatar className="w-25 h-20  border-2">
+              <Avatar className="w-20 h-20  border-2">
                 <AvatarImage src={user.image || "/avatar.png"} />
               </Avatar>
               <div className="mt-4 space-y-1">
@@ -51,7 +53,7 @@ async function Sidebar() {
 
                 <div>
                   <p className="font-medium">{user._count.followers}</p>
-                  <p className="text-xs text-muted-foreground">Follwoers</p>
+                  <p className="text-xs text-muted-foreground">Followers</p>
                 </div>
               </div>
               <Separator className="my-4" />
