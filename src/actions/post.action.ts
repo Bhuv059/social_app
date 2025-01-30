@@ -3,12 +3,11 @@
 import prisma from "@/lib/prisma";
 import { getDbUserId } from "./user.action";
 import { revalidatePath } from "next/cache";
-import { threadId } from "worker_threads";
 
 export async function createPost(content: string, image: string) {
   try {
     const userId = await getDbUserId();
-
+    if (!userId) return;
     const post = await prisma.post.create({
       data: {
         content,
@@ -170,7 +169,7 @@ export async function createComment(postId: string, content: string) {
 export async function deletePost(postId: string) {
   try {
     const userId = await getDbUserId();
-
+    if (!userId) return;
     const post = await prisma.post.findUnique({
       where: { id: postId },
       select: { authorId: true },
