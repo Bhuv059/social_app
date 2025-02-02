@@ -19,8 +19,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "GreenTweet",
-  description: "Twitter for global green",
+  title: "Socially",
+  description: "Social tweet",
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-purple-950 bg-opacity-50 text-purple-950`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-purple-950 bg-opacity-50 text-purple-950 dark:text-white`}
         >
           <ThemeProvider
             attribute="class"
