@@ -35,6 +35,7 @@ async function DesktopNavbar() {
                   .split("@")[0]
                   .replaceAll(".", "")
               }`}
+              //href={`/profile/${user.id}`}
             >
               <UserIcon className="w-4 h-4" />
               <span className="hidden lg:inline">Profile</span>

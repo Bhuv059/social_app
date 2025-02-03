@@ -13,7 +13,7 @@ import { LinkIcon, MapPinIcon } from "lucide-react";
 async function Sidebar() {
   const loggedinUser = await currentUser();
 
-  console.log("loggedinUser-------------", loggedinUser);
+  //console.log("loggedinUser-------------", loggedinUser);
 
   if (!loggedinUser) return <UnAuthenticatedSidebar />;
 

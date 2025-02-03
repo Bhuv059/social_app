@@ -73,7 +73,7 @@ export async function POST(req: Request) {
     } as User;
 
     const newUser = createUser(data);
-    console.log(newUser);
+    //console.log(newUser);
 
     return new Response("", { status: 200 });
   }
