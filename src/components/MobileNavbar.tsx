@@ -18,7 +18,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
-import { useAuth, SignInButton, SignOutButton } from "@clerk/nextjs";
+import { useAuth, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
@@ -73,6 +73,20 @@ function MobileNavbar() {
                     Notifications
                   </Link>
                 </Button>
+                {/*  <Button variant="ghost" className="flex items-center gap-2" asChild>
+                <Link
+                  href={`/profile/${
+                    user.username ??
+                    user.emailAddresses[0].emailAddress
+                      .split("@")[0]
+                      .replaceAll(".", "")
+                  }`}
+                >
+                  <UserIcon className="w-4 h-4" />
+                  <span className="hidden lg:inline">Profile</span>
+                </Link>
+              </Button> */}
+
                 <Button
                   variant="ghost"
                   className="flex items-center gap-3 justify-start"
