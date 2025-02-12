@@ -89,7 +89,8 @@ const PostCard = ({
   };
 
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden  ">
+      {/* <Card className="overflow-hidden bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50  "> */}
       <CardContent className="p-4 sm:p-6">
         <div className="space-y-4">
           <div className="flex space-x-3 sm:space-x-4">

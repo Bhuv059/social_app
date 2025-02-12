@@ -32,7 +32,8 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-purple-950 bg-opacity-50 text-purple-950 dark:text-white`}
+          //className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-r from-purple-300 via-slate-300 to-purple-300 ...  text-purple-950 dark:text-white`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased text-purple-950 dark:text-white`}
         >
           <ThemeProvider
             attribute="class"

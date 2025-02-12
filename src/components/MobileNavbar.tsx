@@ -18,11 +18,19 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
-import { useAuth, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import {
+  useAuth,
+  SignInButton,
+  SignOutButton,
+  useUser,
+  UserButton,
+} from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
 function MobileNavbar() {
+  const { user } = useUser();
+
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { isSignedIn } = useAuth();
   const { theme, setTheme } = useTheme();
@@ -73,30 +81,27 @@ function MobileNavbar() {
                     Notifications
                   </Link>
                 </Button>
-                {/*  <Button variant="ghost" className="flex items-center gap-2" asChild>
-                <Link
-                  href={`/profile/${
-                    user.username ??
-                    user.emailAddresses[0].emailAddress
-                      .split("@")[0]
-                      .replaceAll(".", "")
-                  }`}
-                >
-                  <UserIcon className="w-4 h-4" />
-                  <span className="hidden lg:inline">Profile</span>
-                </Link>
-              </Button> */}
 
                 <Button
                   variant="ghost"
                   className="flex items-center gap-3 justify-start"
                   asChild
                 >
-                  <Link href="/profile">
+                  <Link
+                    href={`/profile/${
+                      user.username ??
+                      user.emailAddresses[0].emailAddress
+                        .split("@")[0]
+                        .replaceAll(".", "")
+                    }`}
+                  >
                     <UserIcon className="w-4 h-4" />
                     Profile
                   </Link>
                 </Button>
+                <div className="flex ml-3 items-center gap-3 justify-start">
+                  <UserButton />
+                </div>
                 <SignOutButton>
                   <Button
                     variant="ghost"
