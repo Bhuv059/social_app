@@ -89,8 +89,8 @@ function MobileNavbar() {
                 >
                   <Link
                     href={`/profile/${
-                      user.username ??
-                      user.emailAddresses[0].emailAddress
+                      user?.username ??
+                      user?.emailAddresses[0].emailAddress
                         .split("@")[0]
                         .replaceAll(".", "")
                     }`}
